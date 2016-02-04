@@ -164,14 +164,20 @@ function __prompt_command()
         # add the result to prompt
         PS1+="\[$Color_On\][$branch]\[$Color_Off\] "
     fi
- 
+
+    # Check if we are in a Python virtual environment
+    if [[ $VIRTUAL_ENV != "" ]]
+        then
+          # Strip out the path of the venv and just leave the env name
+          venv="\[$Color_On\]${Cyan}[${VIRTUAL_ENV##*/}]\[$Color_Off\]"
+    else
+          # In case you don't have one activated
+          venv=''
+    fi
+
+    PS1+="${venv}"
     # prompt $ or # for root
     #PS1+="\$\n→ "
     PS1+="\n→ "
 }
 PROMPT_COMMAND=__prompt_command
-
-
-export PYTHONPATH=/rmt/work/tools/research/tools/python/
-export PATH=~/toolchains/smartmic/gcc-arm-none-eabi-4_7-2013q3/bin/:$PATH
-
