@@ -81,7 +81,7 @@ BPurple="\033[1;35m"
 
 # set up command prompt
 function __prompt_command()
-{   
+{
 
     # capture the exit status of the last command
     EXIT="$?"
