@@ -109,14 +109,14 @@ function __prompt_command()
         else
             local Color_On=$Red
         fi
- 
+
         if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
             branch=${BASH_REMATCH[1]}
         else
             # Detached HEAD. (branch=HEAD is a faster alternative.)
             branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
         fi
- 
+
         # add the result to prompt
         PS1+="\[$Color_On\][$branch]\[$Color_Off\] "
     fi
